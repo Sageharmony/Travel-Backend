@@ -7,6 +7,7 @@ const app = express()
 const db = mongoose.connection
 const cors = require('cors')
 require('dotenv').config()
+const Travel = require('./models/travel_schema')
 
 //___________________
 //Port
@@ -15,9 +16,9 @@ const PORT = process.env.PORT
 //___________________
 //Database
 //___________________
-const MONGODB_URI = process.env.MONGODB_URI
+const DATABASE_URL = process.env.DATABASE_URL
 
-mongoose.connect(MONGODB_URI , { useNewUrlParser: true }
+mongoose.connect(DATABASE_URL , { useNewUrlParser: true }
     );
 //___________________
 //Middleware
@@ -26,13 +27,15 @@ app.use(cors())
 app.use(express.json())
 // Error / success
 
-app.get('/' , (req, res) => {
-    res.send('Hello World!');
-  });
   
-app.listen(3000, ()=>{
-    console.log('listening...')
-})
+  app.listen(PORT, () => console.log( 'Listening on port:', PORT))
 db.on('error', (err) => console.log(err.message + ' is Mongod not running?'));
-db.on('connected', () => console.log('mongo connected: ', MONGODB_URI));
+db.on('connected', () => console.log('mongo connected: ', DATABASE_URL));
 db.on('disconnected', () => console.log('mongo disconnected'));
+
+//___________________
+//ROUTES
+//___________________
+app.get('/travel' , (req, res) => {
+    res.json('Hello World!');
+  });

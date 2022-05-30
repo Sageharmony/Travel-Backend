@@ -6,6 +6,7 @@ const mongoose = require('mongoose')
 const app = express()
 const db = mongoose.connection
 const cors = require('cors')
+
 require('dotenv').config()
 const Travel = require('./models/travel_schema')
 const seed = require('./models/seed')
@@ -26,6 +27,8 @@ mongoose.connect(DATABASE_URL , { useNewUrlParser: true }
 //___________________
 app.use(cors())
 app.use(express.json())
+
+
 // Error / success
 
   

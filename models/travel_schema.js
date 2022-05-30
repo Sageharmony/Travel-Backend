@@ -2,9 +2,10 @@ const mongoose = require('mongoose');
 
 const travelSchema = new mongoose.Schema({
     location: String,
-    mustSee: [String],
+    country: String,
+    mustSee: [{}],
     image: String,
-    restaurantsToTry: [String],
+    restaurantsToTry: [{}],
     bestTime: String,
     costPerPerson: Number
   });

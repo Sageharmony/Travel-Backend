@@ -15,7 +15,7 @@ const Travel = require('./models/travel_schema')
 //___________________
 //Port
 //___________________
-// const PORT = process.env.PORT
+const PORT = process.env.PORT
 //___________________
 //Database
 //___________________

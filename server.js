@@ -6,15 +6,16 @@ const mongoose = require('mongoose')
 const app = express()
 const db = mongoose.connection
 const cors = require('cors')
-
+const Togo = require('./models/togo')
 require('dotenv').config()
 const Travel = require('./models/travel_schema')
-const seed = require('./models/seed')
+// const seed = require('./models/seed')
+
 
 //___________________
 //Port
 //___________________
-const PORT = process.env.PORT
+// const PORT = process.env.PORT
 //___________________
 //Database
 //___________________
@@ -71,6 +72,33 @@ app.delete('/:id', (req, res)=>{
 app.put('/:id', (req,res)=>{
  Travel.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedTravel)=>{
      res.json(updatedTravel)
+ })
+
+})
+
+//____________
+app.get('/placestogo' , (req, res) => {
+    Togo.find({}, (err, foundTogo)=>{
+        res.json(foundTogo)
+    })
+  });
+
+  app.post('/placestogo', (req,res)=>{
+    Togo.create(req.body, (err, createdTogo)=>{
+        res.json(createdTogo)
+    })
+})
+
+
+app.delete('/placestogo/:id', (req, res)=>{
+    Togo.findByIdAndRemove(req.params.id, deletedTogo=>{
+        res.json(deletedTogo)
+    })
+})
+
+app.put('/placestogo/:id', (req,res)=>{
+    Togo.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedTogo)=>{
+     res.json(updatedTogo)
  })
 
 })

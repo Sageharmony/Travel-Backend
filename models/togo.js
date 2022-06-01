@@ -5,7 +5,7 @@ const togoSchema = new mongoose.Schema({
     country: String,
     mustSee:[String],
     restaurants:[String],
-    isComplete: Boolean
+
   });
 
 const Togo = mongoose.model('Togo', togoSchema);

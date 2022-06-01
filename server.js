@@ -8,7 +8,6 @@ const db = mongoose.connection
 const cors = require('cors')
 const Togo = require('./models/togo')
 require('dotenv').config()
-const path = require('path')
 const Travel = require('./models/travel_schema')
 // const seed = require('./models/seed')
 
@@ -30,10 +29,7 @@ mongoose.connect(DATABASE_URL , { useNewUrlParser: true }
 app.use(cors())
 app.use(express.json())
 
-app.use('/', express.static(path.join(__dirname, '/client/build')));
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '/client/build', 'index.html'));
-  });
+
 
 // Error / success
 

@@ -7,7 +7,9 @@ const travelSchema = new mongoose.Schema({
     image: String,
     restaurantsToTry: [{}],
     bestTime: String,
-    costPerPerson: Number
+    costPerPerson: Number,
+    lat: Number,
+    lng: Number
   });
 
 const Travel = mongoose.model('Travel', travelSchema);
